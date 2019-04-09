@@ -1,0 +1,17 @@
+<div class="menu container-fluid" id="menu" :class="{ 'open': isOpen }">
+  <div class="row">
+    <div class="col-md-auto menu__sidebar p-0">
+      <div class="menu__sidebar-header d-flex justify-content-center align-items-center">
+        <h1 class="menu__sidebar-logo">PORTAL ESCOLAR</h1>
+      </div>
+    </div>
+    <div class="col menu__menu d-flex justify-content-between">
+      <div class="menu__bars d-flex align-items-center" @click="showOrHideSidebar">
+        <i class="fa fa-bars"></i>
+      </div>
+      <div class="menu__users-options d-flex align-items-center">
+        Usuario
+      </div>
+    </div>
+  </div>
+</div>
