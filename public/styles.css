@@ -9,7 +9,8 @@ html {
   font-size: 62.5%; }
 
 body {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  background-color: #f6f7fb; }
 
 .main {
   padding-left: 0;
@@ -59,3 +60,6 @@ body {
   .menu__bars i {
     font-size: 1.8rem;
     color: #404E67; }
+
+.home {
+  padding: 2.8rem; }
