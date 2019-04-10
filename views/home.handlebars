@@ -1,34 +1,15 @@
-<div class="home">
+<div class="home" id="home">
   <div class="container-fluid p-0">
     <div class="row">
-      <div class="col-lg-3 col-md-4  col-sm-6 col-12 mb-5">
+      <div v-for="option in options" :key="option.id" class="col-lg-3 col-md-4  col-sm-6 col-12 mb-5">
         <div class="option card">
-          Padres
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-4  col-sm-6 col-12  mb-5">
-        <div class="option card">
-          Docentes
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-4  col-sm-6 col-12 mb-5">
-        <div class="option card">
-          Escala de pagos
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-4  col-sm-6 col-12 mb-5">
-        <div class="option card">
-          Catalogo
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-4  col-sm-6 col-12 mb-5">
-        <div class="option card">
-          Calendario
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-4  col-sm-6 col-12 mb-5">
-        <div class="option card">
-          Reportes
+          <div class="option__img">
+            <img :src="option.imgUrl" class="w-100" alt="">
+          </div>
+          <a href="#" class="option__link">
+            <span>[[ option.description ]]</span> 
+            <span>Ir al sitio <i class="fas fa-location-arrow ml-2"></i> </span> 
+          </a>
         </div>
       </div>
     </div>
