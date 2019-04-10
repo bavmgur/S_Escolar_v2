@@ -1,6 +1,6 @@
 const express = require('express')
 
-/*const conn = require('./models/index').sequelize*/
+const conn = require('./models/index').sequelize
 const config = require('./config/config.dev')
 
 const app = express()
