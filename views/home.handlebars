@@ -1,17 +1,19 @@
-<div class="home" id="home">
+<div class="home">
   <div class="container-fluid p-0">
     <div class="row">
-      <div v-for="option in options" :key="option.id" class="col-lg-3 col-md-4  col-sm-6 col-12 mb-5">
-        <div class="option card">
-          <div class="option__img">
-            <img :src="option.imgUrl" class="w-100" alt="">
+      {{#each options}}
+        <div class="col-lg-3 col-md-4  col-sm-6 col-12 mb-5">
+          <div class="option card">
+            <div class="option__img">
+              <img src="{{ this.imgUrl }}" class="w-100" alt="">
+            </div>
+            <a href="#" class="option__link">
+              <span> {{ this.description }} </span> 
+              <span>Ir al sitio <i class="fas fa-location-arrow ml-2"></i></span> 
+            </a>
           </div>
-          <a href="#" class="option__link">
-            <span>[[ option.description ]]</span> 
-            <span>Ir al sitio <i class="fas fa-location-arrow ml-2"></i> </span> 
-          </a>
         </div>
-      </div>
+      {{/each}}
     </div>
   </div>
 </div>
