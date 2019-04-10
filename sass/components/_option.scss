@@ -1,0 +1,33 @@
+.option {
+  height: 15.7rem;
+
+  &__img {
+    background-color: crimson;
+    height: 70%;
+
+    img {
+      height: 100%;
+      cursor: pointer;
+    }
+  }
+
+  &__link {
+    display: flex;
+    height: 30%;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    text-decoration: none !important;
+    font-weight: 700;
+
+    span:last-child {
+      display: flex;
+      align-items: center;
+      font-weight: 500;
+      font-size: 1.2rem;
+      height: 3rem;
+    }
+  }
+}
