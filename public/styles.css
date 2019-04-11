@@ -45,6 +45,31 @@ body {
   font-size: 1.6rem;
   color: #fff; }
 
+.menu__sidebar-image {
+  margin-bottom: 12rem; }
+
+.menu__sidebar-operation {
+  color: #fff;
+  font-size: 1.1rem;
+  background-color: #3b485e;
+  padding: .5rem 0; }
+
+.menu__sidebar-link {
+  padding: 1.2rem 1rem;
+  color: #fff;
+  font-size: 1.4rem;
+  text-decoration: none !important;
+  transition: all .3s;
+  border-left: .3rem solid transparent; }
+  .menu__sidebar-link i {
+    width: 1.5rem;
+    margin-right: .5rem; }
+
+.menu__sidebar-link:hover {
+  background-color: #37455a;
+  color: #fff;
+  border-left: 0.3rem solid #007bff; }
+
 .menu__menu {
   padding-left: 0;
   height: 5.6rem;

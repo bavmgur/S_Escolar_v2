@@ -31,6 +31,44 @@
     color: $color-white;
   }
 
+  &__sidebar-image {
+    margin-bottom: 12rem;
+  }
+
+  &__sidebar-operation {
+    color: $color-white;
+    font-size: 1.1rem;
+    background-color: $color-sidebar-2;
+    padding: .5rem 0;
+  }
+
+  &__sidebar-content {
+  }
+
+  &__sidebar-menu {
+
+  }
+
+  &__sidebar-link {
+    padding: 1.2rem 1rem;
+    color: $color-white;
+    font-size: 1.4rem;
+    text-decoration: none !important;
+    transition: all .3s;
+    border-left: .3rem solid transparent;
+
+    i {
+      width: 1.5rem;
+      margin-right: .5rem;
+    }
+  }
+
+  &__sidebar-link:hover {
+    background-color: $color-sidebar-3;
+    color: $color-white;
+    border-left: .3rem solid $color-primary-1;
+  }
+
   &__menu {
     padding-left: 0;
     height: 5.6rem;
