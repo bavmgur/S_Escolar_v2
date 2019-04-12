@@ -146,11 +146,11 @@ body {
 
 .login-title {
   padding: 5px 0 5px 50px;
-  border-left: 6px solid #ed2553;
+  border-left: 6px solid #007bff;
   margin-bottom: 40px; }
 
 .login-title > h1 {
-  color: #ed2553;
+  color: #007bff;
   font-weight: bolder;
   font-size: 35px; }
 
@@ -169,8 +169,8 @@ body {
 
 .btn-login:hover {
   background: #fff;
-  border: 2px solid #ed2553;
-  color: #ed2553; }
+  border: 2px solid #007bff;
+  color: #007bff; }
 
 .group {
   position: relative;
@@ -204,7 +204,7 @@ input:focus ~ label,
 input:valid ~ label {
   top: -20px;
   font-size: 14px;
-  color: #ed2553; }
+  color: #007bff; }
 
 .bar {
   position: relative;
@@ -218,7 +218,7 @@ input:valid ~ label {
   width: 0;
   bottom: 1px;
   position: absolute;
-  background: #ed2553;
+  background: #007bff;
   transition: 0.2s ease all;
   -moz-transition: 0.2s ease all;
   -webkit-transition: 0.2s ease all; }
@@ -250,21 +250,21 @@ input:focus ~ .highlight {
 /* ANIMATIONS ================ */
 @-webkit-keyframes inputHighlighter {
   from {
-    background: #ed2553; }
+    background: #007bff; }
   to {
     width: 0;
     background: transparent; } }
 
 @-moz-keyframes inputHighlighter {
   from {
-    background: #ed2553; }
+    background: #007bff; }
   to {
     width: 0;
     background: transparent; } }
 
 @keyframes inputHighlighter {
   from {
-    background: #ed2553; }
+    background: #007bff; }
   to {
     width: 0;
     background: transparent; } }
