@@ -1,8 +1,8 @@
 .wrapper {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 500px;
+    align-items: flex-start;
+    height: 50rem;
 }
 
 .login-container {
@@ -12,20 +12,20 @@
     min-width: 25vw;
 }
 
-.login-title {
-    padding: 5px 0 5px 50px;
-    border-left: 6px solid #ed2553;
-    margin-bottom: 40px;
+.login__title {
+  font-weight: 300;
+  font-size: 3rem;
 }
 
-.login-title>h1 {
+.login-title > h1 {
     color: #ed2553;
     font-weight: bolder;
-    font-size: 35px;
+    font-size: 1.6rem;
+    background-color: blue;
 }
 
 .login-body {
-    padding: 5px 50px 5px 50px;
+  padding: 5px 50px 5px 50px;
 }
 
 .btn-login {
@@ -54,8 +54,8 @@
     margin-bottom: 45px;
 }
 
-input {
-    font-size: 18px;
+/*input {
+    font-size: 1.4rem;
     padding: 10px 10px 10px 5px;
     display: block;
     width: 100%;
@@ -69,7 +69,7 @@ input:focus {
 
 label {
     color: #999;
-    font-size: 18px;
+    font-size: 1.4rem;
     font-weight: normal;
     position: absolute;
     pointer-events: none;
@@ -79,9 +79,6 @@ label {
     -moz-transition: 0.2s ease all;
     -webkit-transition: 0.2s ease all;
 }
-
-
-/* active state */
 
 input:focus~label,
 input:valid~label {
@@ -137,7 +134,7 @@ input:focus~.highlight {
     -moz-animation: inputHighlighter 0.3s ease;
     animation: inputHighlighter 0.3s ease;
 }
-
+*/
 
 /* ANIMATIONS ================ */
 

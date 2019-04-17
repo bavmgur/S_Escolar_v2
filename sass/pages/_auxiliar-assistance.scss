@@ -1,0 +1,48 @@
+.auxiliar-assistance {
+  background-color: $color-white;
+
+  &__header {
+    height: 15rem;
+    padding: 1rem 1rem 0 1rem;
+  }
+
+  &__test {
+    border-bottom: .1rem solid $color-back-2;
+    background-color: $color-white;
+    height: 100%;
+  }
+
+  &__body {
+
+  }
+
+  &__search {
+    padding: 2rem 1rem;
+
+    input {
+      width: 15rem;
+      border-radius: .3rem;
+      border: none;
+      border: .1rem solid #ddd;
+      padding: .2rem;
+      outline: none;
+      font-size: 1.2rem;
+    }
+  }
+
+  &__assistance {
+
+  }
+
+  &__table {
+    thead {
+      background-color: $color-primary-1;
+    }
+
+    th, td {
+      font-size: 1.2rem;
+    }
+  }
+
+
+}
