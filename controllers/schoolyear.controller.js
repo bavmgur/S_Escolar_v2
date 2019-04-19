@@ -1,6 +1,4 @@
-const db = require('../models/index')
-
-const SchoolYear = db['SchoolYear']
+const { SchoolYear } = require('../models/index')
 
 function getAllSchoolYears(req, res) {
     SchoolYear.findAll()

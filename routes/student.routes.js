@@ -1,8 +1,10 @@
 const express = require('express')
 const router = express.Router()
 
-const studentController = require('../controllers/index')
+const { StudentController } = require('../controllers/index')
 
-// router.get('/', studentController.getIndex)
+router.post('/', StudentController.createStudent)
+router.get('/', StudentController.getAllStudents)
+router.get('/dni/:dni', StudentController.getStudentByDni)
 
 module.exports = router

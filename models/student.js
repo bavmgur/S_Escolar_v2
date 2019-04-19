@@ -20,6 +20,10 @@ module.exports = (sequelize, DataTypes) => {
         Student.hasMany(models.Score, {
             foreignKey: 'StudentId'
         })
+
+        Student.hasMany(models.Assistance, {
+            foreignKey: 'StudentId'
+        })
         Student.belongsTo(models.Classroom, {
             foreignKey: 'ClassroomId',
             onDelete: 'CASCADE'
