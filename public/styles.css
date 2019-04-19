@@ -159,8 +159,8 @@ body {
 .wrapper {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  height: 50rem; }
+  align-items: center;
+  height: 500px; }
 
 .login-container {
   padding: 20px 0px;
@@ -168,15 +168,15 @@ body {
   width: 30vw;
   min-width: 25vw; }
 
-.login__title {
-  font-weight: 300;
-  font-size: 3rem; }
+.login-title {
+  padding: 5px 0 5px 50px;
+  border-left: 6px solid #007bff;
+  margin-bottom: 40px; }
 
 .login-title > h1 {
-  color: #ed2553;
+  color: #007bff;
   font-weight: bolder;
-  font-size: 1.6rem;
-  background-color: blue; }
+  font-size: 35px; }
 
 .login-body {
   padding: 5px 50px 5px 50px; }
@@ -193,112 +193,13 @@ body {
 
 .btn-login:hover {
   background: #fff;
-  border: 2px solid #ed2553;
-  color: #ed2553; }
+  border: 2px solid #007bff;
+  color: #007bff; }
 
-.group {
-  position: relative;
-  margin-bottom: 45px; }
-
-/*input {
-    font-size: 1.4rem;
-    padding: 10px 10px 10px 5px;
-    display: block;
-    width: 100%;
-    border: none;
-    border-bottom: 1px solid #757575;
-}
-
-input:focus {
-    outline: none;
-}
-
-label {
-    color: #999;
-    font-size: 1.4rem;
-    font-weight: normal;
-    position: absolute;
-    pointer-events: none;
-    left: 5px;
-    top: 10px;
-    transition: 0.2s ease all;
-    -moz-transition: 0.2s ease all;
-    -webkit-transition: 0.2s ease all;
-}
-
-input:focus~label,
-input:valid~label {
-    top: -20px;
-    font-size: 14px;
-    color: #ed2553;
-}
-
-.bar {
-    position: relative;
-    display: block;
-    width: 100%;
-}
-
-.bar:before,
-.bar:after {
-    content: '';
-    height: 2px;
-    width: 0;
-    bottom: 1px;
-    position: absolute;
-    background: #ed2553;
-    transition: 0.2s ease all;
-    -moz-transition: 0.2s ease all;
-    -webkit-transition: 0.2s ease all;
-}
-
-.bar:before {
-    left: 50%;
-}
-
-.bar:after {
-    right: 50%;
-}
-
-input:focus~.bar:before,
-input:focus~.bar:after {
-    width: 50%;
-}
-
-.highlight {
-    position: absolute;
-    height: 60%;
-    width: 100px;
-    top: 25%;
-    left: 0;
-    pointer-events: none;
-    opacity: 0.5;
-}
-
-input:focus~.highlight {
-    -webkit-animation: inputHighlighter 0.3s ease;
-    -moz-animation: inputHighlighter 0.3s ease;
-    animation: inputHighlighter 0.3s ease;
-}
-*/
-/* ANIMATIONS ================ */
-@-webkit-keyframes inputHighlighter {
-  from {
-    background: #ed2553; }
-  to {
-    width: 0;
-    background: transparent; } }
-
-@-moz-keyframes inputHighlighter {
-  from {
-    background: #ed2553; }
-  to {
-    width: 0;
-    background: transparent; } }
-
-@keyframes inputHighlighter {
-  from {
-    background: #ed2553; }
-  to {
-    width: 0;
-    background: transparent; } }
+.upload-button {
+  cursor: pointer;
+  width: 100%;
+  border-radius: 5px;
+  background: #007bff;
+  color: #eee;
+  font-size: 12vw; }
