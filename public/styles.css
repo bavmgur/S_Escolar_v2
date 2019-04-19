@@ -111,14 +111,15 @@ body {
 .auxiliar-assistance {
   background-color: #fff; }
   .auxiliar-assistance__header {
-    height: 15rem;
+    height: 9.5rem;
     padding: 1rem 1rem 0 1rem; }
   .auxiliar-assistance__test {
     border-bottom: 0.1rem solid #eee;
     background-color: #fff;
     height: 100%; }
   .auxiliar-assistance__search {
-    padding: 2rem 1rem; }
+    padding: 2rem 1rem;
+    border-bottom: 0.1rem solid #eee; }
     .auxiliar-assistance__search input {
       width: 15rem;
       border-radius: .3rem;
@@ -127,10 +128,32 @@ body {
       padding: .2rem;
       outline: none;
       font-size: 1.2rem; }
-  .auxiliar-assistance__table thead {
-    background-color: #007bff; }
-  .auxiliar-assistance__table th, .auxiliar-assistance__table td {
-    font-size: 1.2rem; }
+  .auxiliar-assistance__form input {
+    outline: none !important; }
+  .auxiliar-assistance__form button {
+    background-color: #007bff;
+    color: #fff;
+    padding: .3rem 2rem;
+    border-radius: .3rem;
+    border: none; }
+  .auxiliar-assistance__detail {
+    background-color: #14dcb1;
+    display: inline-block;
+    padding: .3rem 2rem;
+    border-radius: .3rem;
+    color: #fff; }
+  .auxiliar-assistance__detail:hover {
+    color: #fff;
+    background-color: #17cfa7;
+    text-decoration: none; }
+  .auxiliar-assistance__table {
+    border: 0.2rem solid #007bff; }
+    .auxiliar-assistance__table thead {
+      background-color: #007bff; }
+    .auxiliar-assistance__table th, .auxiliar-assistance__table td {
+      font-size: 1.2rem; }
+    .auxiliar-assistance__table tbody tr {
+      border-bottom: 0.2rem solid #007bff !important; }
 
 .option {
   height: 15.7rem; }
