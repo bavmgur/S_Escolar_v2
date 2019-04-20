@@ -1,7 +1,7 @@
 <div class="auxiliar-assistance mb-3">
   <div class="auxiliar-assistance__header">
     <div class="auxiliar-assistance__test">
-      
+
     </div>
   </div>
   <div class="auxiliar-assistance__search">
@@ -23,69 +23,17 @@
         </tr>
       </thead>
       <tbody>
+        {{#each students}}
         <tr>
-          <td>Juan Delgado Marcos</td>
-          <td>20</td>
-          <td>5to</td>
-          <td>B</td>
-          <td></td>
-          <td></td>
+          <td>{{dni}}</td>
+          <td>{{name}}</td>
+          <td>{{last_name}}</td>
+          <td>{{'Assistance.TotalAssistence'}}</td>
+          <td>{{'Assistance.Total'}}</td>
+          <td>{{'Assistance.Total'}} </td>
           <td></td>
         </tr>
-        <tr>
-          <td>Becker Vega Maceda</td>
-          <td>21</td>
-          <td>5to</td>
-          <td>B</td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>Antonello Vega Maceda</td>
-          <td>21</td>
-          <td>5to</td>
-          <td>B</td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>Antonello Vega Maceda</td>
-          <td>21</td>
-          <td>5to</td>
-          <td>B</td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>Antonello Vega Maceda</td>
-          <td>21</td>
-          <td>5to</td>
-          <td>B</td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>Antonello Vega Maceda</td>
-          <td>21</td>
-          <td>5to</td>
-          <td>B</td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>Antonello Vega Maceda</td>
-          <td>21</td>
-          <td>5to</td>
-          <td>B</td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
+        {{/each}}
       </tbody>
     </table>
   </div>

@@ -1,25 +1,35 @@
 const { Student, Assistance, sequelize, Sequelize } = require('../models/index')
 const Op = Sequelize.Op
 
-function getAllStudents(req, res) {
-    Student.findAll({
+async function getAllStudents(req, res) {
+
+    let students = await Student.findAll({
             include: [{
                 model: Assistance,
                 attributes: [
-                    [sequelize.fn('sum', sequelize.col('Assistance.state')), 'TotalAssistence'],
+                    [sequelize.fn('Assistance.state*', sequelize.col('Assistance.state')), 'STATE'],
                     [sequelize.fn('count', sequelize.col('Assistance.state')), 'Total']
                 ]
 
             }],
-            group: ['Assistance.StudentId'],
+            group: ['Assistance.StudentId', 'Assistance.state'],
             raw: true
-        })
-        .then(students => {
-            res.send(students)
         })
         .catch(err => {
             if (err) throw err
         })
+        // return students
+
+    const objMapped = await students.reduce((acc, item) => {
+        (acc[item.id] = acc[item.id] || []).push(item['Assistance.STATE'] == 1 ? { 'assistance': item } : { 'not-assistance': item })
+        return acc;
+    }, {});
+
+
+    console.log(objMapped['1']);
+
+
+    res.json(objMapped);
 }
 
 function getStudentByDni(req, res) {

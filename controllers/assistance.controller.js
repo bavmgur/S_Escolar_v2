@@ -1,4 +1,8 @@
+const StudentController = require('./student.controller')
+
 const { Assistance } = require('../models/index')
+
+
 
 
 // function getAllStudents(req, res) {
@@ -22,6 +26,13 @@ function createAssistance(req, res) {
 
 }
 
+async function getIndex(req, res) {
+
+    const students = await StudentController.getAllStudents(req, res)
+
+    res.render('assistant-assistance', { students })
+}
+
 // function deleteStudent(req, res) {
 //     const params = req.params
 
@@ -40,5 +51,6 @@ function createAssistance(req, res) {
 // }
 
 module.exports = {
-    createAssistance
+    createAssistance,
+    getIndex
 }
