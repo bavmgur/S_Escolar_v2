@@ -12,9 +12,7 @@ const destPath = __dirname + '/public'
 
 module.exports = (app) => {
 
-  app.engine('handlebars', expressHbs({ 
-    defaultLayout: 'main',
-  }))
+  app.engine('handlebars', expressHbs({ defaultLayout: 'main' }))
   app.set('view engine', 'handlebars')
 
   app.use(morgan('dev'))
