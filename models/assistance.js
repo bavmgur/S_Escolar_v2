@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
     const Assistance = sequelize.define('Assistance', {
-        date: DataTypes.DATE,
+        hour: DataTypes.STRING,
         state: DataTypes.INTEGER
     }, {});
     Assistance.associate = function(models) {

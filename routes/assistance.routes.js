@@ -5,7 +5,8 @@ const { AssistanceController } = require('../controllers/index')
 
 // router.get('/', ClassroomController.getAllClassrooms)
 router.post('/', AssistanceController.createAssistance)
-router.get('/', AssistanceController.getIndex)
-    // router.delete('/:id', ClassroomController.deleteClassroom)
+router.get('/', AssistanceController.getAllAssistancesByStudent)
+
+// router.delete('/:id', ClassroomController.deleteClassroom)
 
 module.exports = router

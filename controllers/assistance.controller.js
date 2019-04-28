@@ -1,6 +1,5 @@
-const StudentController = require('./student.controller')
-
-const { Assistance } = require('../models/index')
+const { Assistance, Sequelize, sequelize } = require('../models/index')
+const Op = Sequelize.Op
 
 
 
@@ -26,11 +25,56 @@ function createAssistance(req, res) {
 
 }
 
-async function getIndex(req, res) {
+async function getAllAssistancesByStudent(req, res) {
+    const query = req.query
+    console.log(query)
+    let assistances = []
+    let queryConfig = {}
 
-    const students = await StudentController.getAllStudents(req, res)
 
-    res.render('assistant-assistance', { students })
+    if (!query.cod_alumno) {
+        return res.status(404).json({
+            ok: false,
+            message: 'No existe un alumno con este id'
+        })
+    }
+
+    queryConfig = query.cod_alumno ? {
+        where: {
+            StudentId: query.cod_alumno
+
+        },
+        raw: true
+    } : {}
+
+    if (query['fecha_inicio'] && query['fecha_final']) {
+        queryConfig = {
+
+            attributes: [
+                'id', 'hour', 'state', [sequelize.fn('date_format', sequelize.col('createdAt'), '%Y-%m-%d'), 'date']
+            ],
+            where: {
+                createdAt: {
+                    [Op.between]: [query.fecha_inicio, query.fecha_final]
+                },
+                StudentId: query.cod_alumno
+
+            },
+            raw: true
+        }
+    }
+
+    assistances = await Assistance.findAll(queryConfig)
+        .catch(err => {
+            if (err) throw err
+        })
+
+    assistances.map(item => item.state = (item.state == 0 ? "Falto" : "Asistio"))
+
+    res.status(200).json({
+        ok: true,
+        assistances
+    })
 }
 
 // function deleteStudent(req, res) {
@@ -52,5 +96,5 @@ async function getIndex(req, res) {
 
 module.exports = {
     createAssistance,
-    getIndex
+    getAllAssistancesByStudent
 }

@@ -20,16 +20,26 @@ async function getAllStudents(req, res) {
         })
         // return students
 
-    const objMapped = await students.reduce((acc, item) => {
-        (acc[item.id] = acc[item.id] || []).push(item['Assistance.STATE'] == 1 ? { 'assistance': item } : { 'not-assistance': item })
+
+    const dataStudents = await students.reduce((acc, item) => {
+
+        acc[item.id] = acc[item.id] || item
+
+        item['Assistance.STATE'] == 1 ? (acc[item.id]['assistance'] = item['Assistance.Total']) : (acc[item.id]['not-assistance'] = item['Assistance.Total'])
+
+        acc[item.id]['assistance'] = acc[item.id]['assistance'] || 0
+        acc[item.id]['not-assistance'] = acc[item.id]['not-assistance'] || 0
+
+        acc[item.id]['total-assistance'] = acc[item.id]['assistance'] + acc[item.id]['not-assistance']
+
+        delete acc[item.id]['Assistance.STATE']
+        delete acc[item.id]['Assistance.Total']
+
         return acc;
     }, {});
 
 
-    console.log(objMapped['1']);
-
-
-    res.json(objMapped);
+    res.json(dataStudents);
 }
 
 function getStudentByDni(req, res) {
@@ -40,24 +50,31 @@ function getStudentByDni(req, res) {
         })
         .then(student => {
 
-            Student.findOne({
-                where: { id: student.id },
-                include: [{
-                    model: Assistance,
-                    where: { StudentId: student.id }
-                }],
+            Student
+                .findOne({
+                    where: { id: student.id },
+                    include: [{
+                        model: Assistance,
+                        where: { StudentId: student.id }
+                    }],
 
-            }).then(student => {
+                })
+                .then(student => {
 
-                if (student) {
+                    if (student) {
+
+                        return res.status(400).json({
+                            ok: false,
+                            message: 'No existe un alumno con este DNI'
+                        })
+                    }
 
                     res.status(200).json({
                         ok: true,
                         student: student
                     })
-                }
 
-            })
+                })
 
 
         })
