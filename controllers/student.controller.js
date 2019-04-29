@@ -1,55 +1,74 @@
 const { Student, Assistance, sequelize, Sequelize } = require('../models/index')
 const Op = Sequelize.Op
 
+
 async function getAllStudents(req, res) {
 
+    const query = req.query
+
+    let queryConfig = {}
+
+    if (query['fecha_inicio'] && query['fecha_final']) {
+        queryConfig = {
+            createdAt: {
+                [Op.between]: [query.fecha_inicio, query.fecha_final]
+            }
+        }
+
+    }
+    if (query['state']) {
+        queryConfig = {
+            [Op.and]: {
+                createdAt: {
+                    [Op.between]: [query.fecha_inicio, query.fecha_final]
+                },
+                state: query.state
+            }
+        }
+    }
+
     let students = await Student.findAll({
+
             include: [{
                 model: Assistance,
+                group: [sequelize.col('Assistance.state')],
                 attributes: [
-                    [sequelize.fn('Assistance.state*', sequelize.col('Assistance.state')), 'STATE'],
+                    [sequelize.fn('Assistance.state*', sequelize.col('Assistance.state')), 'state'],
                     [sequelize.fn('count', sequelize.col('Assistance.state')), 'Total']
-                ]
+                ],
+                where: queryConfig,
+                duplicating: false
 
             }],
-            group: ['Assistance.StudentId', 'Assistance.state'],
-            raw: true
+            limit: 10,
+            offset: (query.page || 1) * 10 - 10,
+            group: [sequelize.col('Assistance.state'), sequelize.col('Assistance.StudentId')],
+
         })
         .catch(err => {
             if (err) throw err
         })
-        // return students
-
-
-    const dataStudents = await students.reduce((acc, item) => {
-
-        acc[item.id] = acc[item.id] || item
-
-        item['Assistance.STATE'] == 1 ? (acc[item.id]['assistance'] = item['Assistance.Total']) : (acc[item.id]['not-assistance'] = item['Assistance.Total'])
-
-        acc[item.id]['assistance'] = acc[item.id]['assistance'] || 0
-        acc[item.id]['not-assistance'] = acc[item.id]['not-assistance'] || 0
-
-        acc[item.id]['total-assistance'] = acc[item.id]['assistance'] + acc[item.id]['not-assistance']
-
-        delete acc[item.id]['Assistance.STATE']
-        delete acc[item.id]['Assistance.Total']
-
-        return acc;
-    }, {});
-
-
-    res.json(dataStudents);
+    students.map(item => {
+        for (e in item.Assistance) {
+            item.Assistance[e].state = item.Assistance[e].state == 1 ? 'Asistio' : 'Falto'
+        }
+    })
+    res.json(students);
 }
 
-function getStudentByDni(req, res) {
+async function getStudentByDni(req, res) {
     const params = req.params
-    Student
+    await Student
         .findOne({
             where: { dni: params.dni }
         })
-        .then(student => {
-
+        .then(function(student) {
+            if (!student) {
+                return res.status(400).json({
+                    ok: false,
+                    message: 'No existe un alumno con este DNI'
+                })
+            }
             Student
                 .findOne({
                     where: { id: student.id },
@@ -59,16 +78,13 @@ function getStudentByDni(req, res) {
                     }],
 
                 })
-                .then(student => {
-
-                    if (student) {
-
+                .then(function(student) {
+                    if (!student) {
                         return res.status(400).json({
                             ok: false,
                             message: 'No existe un alumno con este DNI'
                         })
                     }
-
                     res.status(200).json({
                         ok: true,
                         student: student
@@ -102,7 +118,7 @@ function deleteStudent(req, res) {
             where: { id: params.id }
         })
         .then(student => {
-            SchoolYear.destroy({
+            Student.destroy({
                     where: { id: params.id }
                 })
                 .then(student => {

@@ -39,13 +39,15 @@ async function getAllAssistancesByStudent(req, res) {
         })
     }
 
-    queryConfig = query.cod_alumno ? {
+    queryConfig = {
         where: {
             StudentId: query.cod_alumno
 
         },
+        limit: 10,
+        offset: (query.page || 1) * 10 - 10,
         raw: true
-    } : {}
+    }
 
     if (query['fecha_inicio'] && query['fecha_final']) {
         queryConfig = {
@@ -64,12 +66,12 @@ async function getAllAssistancesByStudent(req, res) {
         }
     }
 
-    assistances = await Assistance.findAll(queryConfig)
+    assistances = await Assistance.findAndCountAll(queryConfig)
         .catch(err => {
             if (err) throw err
         })
 
-    assistances.map(item => item.state = (item.state == 0 ? "Falto" : "Asistio"))
+    assistances.rows.map(item => item.state = (item.state == 0 ? "Falto" : "Asistio"))
 
     res.status(200).json({
         ok: true,
