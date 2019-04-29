@@ -29,7 +29,7 @@ async function getAllStudents(req, res) {
     console.log(objMapped['1']);
 
 
-    res.json(objMapped);
+    return objMapped
 }
 
 function getStudentByDni(req, res) {
