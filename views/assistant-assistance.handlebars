@@ -1,4 +1,4 @@
-<div class="auxiliar-assistance mb-3">
+<div class="auxiliar-assistance mb-3" id="axuliarAssistance">
   <div class="auxiliar-assistance__header">
     <div class="auxiliar-assistance__test">
       <form action="" class="pt-4 auxiliar-assistance__form">
@@ -103,6 +103,95 @@
         </tr>
       </tbody>
     </table>
-    <h4 class="text-center mb-4 text-uppercase">Lista de Alumnos con mas de 3 faltas</h4>
+  </div>
+  <div class="auxiliar-assistance-modal">
+    <div class="auxiliar-assistance-modal__back"></div>
+    <div class="auxiliar-assistance-modal__content py-4">
+      <div class="auxiliar-assistance-modal__header">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col">
+              <div>
+                <label  class="font-weight-bold" for="">Codigo de alumno: </label>
+                <span>15121029</span>
+              </div>
+              <div>
+                <label  class="font-weight-bold" for="">Grado y Seccion: </label>
+                <span>5to E</span> 
+              </div> 
+            </div>
+            <div class="col">
+              <h5 class="font-weight-bold">Numero de Telefono o Celular</h5>
+              <div>
+                <label  class="font-weight-bold" for="">Padre: </label>
+                <span>983895147</span>
+              </div>
+              <div>
+                <label  class="font-weight-bold" for="">Madre: </label>
+                <span>951136165</span> 
+              </div> 
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <form action="" class="pt-4 auxiliar-assistance__form">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-9">
+                      <div class="form-group">
+                        <div class="row align-items-center">
+                          <label for="" class="col p-0 font-weight-bold">Fecha Inicial</label>
+                          <input type="date" class="col  form-control w-50">
+                          <label for="" class="col  pr-0 font-weight-bold">Fecha Final</label>
+                          <input type="date" class="col form-control w-50">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-group">
+                        <div class="row align-items-center">
+                          <label for="" class="col-4 font-weight-bold">Filtros</label>
+                          <input type="checkbox" name="" id="" class="mr-1">
+                          <label for="" class="mr-3">Si</label>
+                          <input type="checkbox" name="" id="" class="mr-1">
+                          <label for="" class="mr-3">No</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="auxiliar-Assistance-modal__body py-5 px-3">
+        <table class="mb-5  table table-hover auxiliar-assistance__table">
+          <thead>
+            <tr class="text-white">
+              <th>Fecha</th>
+              <th class="text-center">Hora</th>
+              <th class="text-center">Puntualidad</th>
+              <th class="text-center">Asistencias</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Juan Delgado Marcos</td>
+              <td class="text-center">20</td>
+              <td class="text-center">5to</td>
+              <td class="text-center">B</td>
+            </tr>
+            <tr>
+              <td>Juan Delgado Marcos</td>
+              <td class="text-center">20</td>
+              <td class="text-center">5to</td>
+              <td class="text-center">B</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
+<script src="/js/pages/auxiliar-assistance.js"></script>
