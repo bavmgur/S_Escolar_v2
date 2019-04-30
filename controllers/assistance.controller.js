@@ -40,33 +40,28 @@ async function getAllAssistancesByStudent(req, res) {
     }
 
     queryConfig = {
-        where: {
-            StudentId: query.cod_alumno
+        StudentId: query.cod_alumno
+    }
 
-        },
-        limit: 10,
-        offset: (query.page || 1) * 10 - 10,
-        raw: true
+    if (query['state']) {
+        queryConfig['state'] = query.state
     }
 
     if (query['fecha_inicio'] && query['fecha_final']) {
-        queryConfig = {
-
-            attributes: [
-                'id', 'hour', 'state', [sequelize.fn('date_format', sequelize.col('createdAt'), '%Y-%m-%d'), 'date']
-            ],
-            where: {
-                createdAt: {
-                    [Op.between]: [query.fecha_inicio, query.fecha_final]
-                },
-                StudentId: query.cod_alumno
-
-            },
-            raw: true
+        queryConfig['createdAt'] = {
+            [Op.between]: [query.fecha_inicio, query.fecha_final]
         }
     }
 
-    assistances = await Assistance.findAndCountAll(queryConfig)
+    assistances = await Assistance.findAndCountAll({
+            attributes: [
+                'id', 'hour', 'state', [sequelize.fn('date_format', sequelize.col('createdAt'), '%Y-%m-%d'), 'date']
+            ],
+            where: queryConfig,
+            limit: 10,
+            offset: (query.page || 1) * 10 - 10,
+            raw: true
+        })
         .catch(err => {
             if (err) throw err
         })
